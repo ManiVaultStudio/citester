@@ -42,7 +42,7 @@ class CITester(ConanFile):
     exports_sources = "CMakeLists.txt", "src/*"
 
     def requirements(self):
-        self.requires("poco/1.12.4")
+        self.requires("poco/1.9.0")
 
     def config_options(self):
         if self.settings.os == "Windows":
