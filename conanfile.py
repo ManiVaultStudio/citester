@@ -10,18 +10,7 @@ import re
 # from the can be substituted 
 def compatibility(os, compiler, compiler_version):
     if os == "Macos" and compiler == "apple-clang" and bool(re.match("14.*", compiler_version)):  
-        return """bzip2/1.0.8:compiler.version=13
-citester/1.0.0:compiler.version=13
-expat/2.6.2:compiler.version=13
-libmysqlclient/8.1.0:compiler.version=13
-libpq/15.4:compiler.version=13
-lz4/1.9.4:compiler.version=13
-openssl/3.2.0:compiler.version=13
-pcre2/10.42:compiler.version=13
-poco/1.13.3:compiler.version=13
-sqlite3/3.45.0:compiler.version=13
-zlib/1.3:compiler.version=13
-zstd/1.5.5:compiler.version=13
+        return """fmt/10.2.1:compiler.version=13
 """
     return None
 class CITester(ConanFile):
@@ -42,7 +31,7 @@ class CITester(ConanFile):
     exports_sources = "CMakeLists.txt", "src/*"
 
     def requirements(self):
-        self.requires("poco/1.9.0")
+        self.requires("fmt/10.2.1")
 
     def config_options(self):
         if self.settings.os == "Windows":
