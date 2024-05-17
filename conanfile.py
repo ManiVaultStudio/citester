@@ -11,6 +11,7 @@ import re
 def compatibility(os, compiler, compiler_version):
     print(f"In citester compatibility function {os} {compiler} {compiler_version}")
     if os == "Macos" and compiler == "apple-clang" and bool(re.match("14.*", compiler_version)):  
+        print("Compatibility match")
         return """fmt/10.2.1:compiler.version=13
 """
     return None
