@@ -34,10 +34,11 @@ class CITester(ConanFile):
     exports_sources = "CMakeLists.txt", "src/*"
 
     def requirements(self):
-        if self.settings.os == "Macos" and self.settings.compiler == "apple-clang" and bool(re.match("14.*", str(self.settings.compiler.version))):
-            self.requires("fmt/10.2.1", settings={"compiler.version":"13"})
-        else:
-            self.requires("fmt/10.2.1")
+        self.requires("fmt/10.2.1", settings={"compiler.version":"13"})
+        # if self.settings.os == "Macos" and self.settings.compiler == "apple-clang" and bool(re.match("14.*", str(self.settings.compiler.version))):
+        #     self.requires("fmt/10.2.1", settings={"compiler.version":"13"})
+        # else:
+        #     self.requires("fmt/10.2.1")
 
     def config_options(self):
         if self.settings.os == "Windows":
