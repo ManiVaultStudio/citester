@@ -59,8 +59,5 @@ class CITester(ConanFile):
         cmake.build()
 
     def package(self):
-        copy(self, "*.h", os.path.join(self.source_folder, "include"), os.path.join(self.package_folder, "include"))
-        copy(self, "*.a", os.path.join(self.build_folder, "build", "package_dep"), os.path.join(self.package_folder, "lib"), keep_path=False)
+        self.copy(pattern="Release/*")
 
-    def package_info(self):
-        self.cpp_info.libs = ["package_dep"]
