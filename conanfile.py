@@ -2,6 +2,7 @@ from conan import ConanFile
 from conan.tools.files import copy
 from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
 
+from pathlib import Path
 import os
 import re
 
@@ -47,6 +48,7 @@ class CITester(ConanFile):
         if self.settings.os == "Linux":
             generator = "Ninja Multi-Config"
         tc = CMakeToolchain(self, generator=generator)
+        tc.variables["INSTALL_DIR"] = Path(self.build_folder, "install").as_posix()
         tc.generate()
 
         deps = CMakeDeps(self)
