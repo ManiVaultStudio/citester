@@ -9,13 +9,13 @@ import re
 # Define compatibility fallbacks.
 # These are dependencies where a different compiler version 
 # from the can be substituted 
-def compatibility(os, compiler, compiler_version):
-    print(f"In citester compatibility function {os} {compiler} {compiler_version}")
-    if os == "Macos" and compiler == "apple-clang" and bool(re.match("14.*", compiler_version)):  
-        print("Compatibility match")
-        return ["fmt/10.2.1:compiler.version=13"]
+# def compatibility(os, compiler, compiler_version):
+#     print(f"In citester compatibility function {os} {compiler} {compiler_version}")
+#     if os == "Macos" and compiler == "apple-clang" and bool(re.match("14.*", compiler_version)):  
+#         print("Compatibility match")
+#         return ["fmt/10.2.1:compiler.version=13"]
 
-    return None
+#     return None
 class CITester(ConanFile):
 
     url = "https://github.com/ManiVaultStudio/citester"
@@ -34,7 +34,10 @@ class CITester(ConanFile):
     exports_sources = "CMakeLists.txt", "src/*"
 
     def requirements(self):
-        self.requires("fmt/10.2.1")
+        if self.settings.os == "Macos" and self.settings.compiler == "apple-clang" and bool(re.match("14.*", self.settings.compiler_version)):
+            self.requires("fmt/10.2.1", settings={"compiler.version":"13"})
+        else:
+            self.requires("fmt/10.2.1")
 
     def config_options(self):
         if self.settings.os == "Windows":
