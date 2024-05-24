@@ -23,7 +23,7 @@ jobs:
         ref: ${{ github.event.pull_request.head.ref }}
     - id: set-matrix  
       run: |
-        cat matrix.yml >> $GITHUB_OUTPUT
+        cat matrix.yml >> "$GITHUB_OUTPUT"
                
   cross-platform-build:
     name: Cross platform build
