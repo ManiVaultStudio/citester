@@ -25,7 +25,8 @@ jobs:
       run: |
         echo "outputting matrix"
         cat matrix.yml
-        cat matrix.yml >> "$GITHUB_OUTPUT"
+        export matrix="$(cat matrix.yml)"
+        echo matrix >> "$GITHUB_OUTPUT"
                
   cross-platform-build:
     name: Cross platform build
