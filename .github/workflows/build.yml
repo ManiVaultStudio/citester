@@ -23,8 +23,7 @@ jobs:
         ref: ${{ github.event.pull_request.head.ref }}
     - id: set-matrix  
       run: |
-        matrix=$(cat matrix.yml)
-        echo "name=matrix::$(echo '$matrix')" >> $GITHUB_OUTPUT 
+        cat matrix.yml >> $GITHUB_OUTPUT
                
   cross-platform-build:
     name: Cross platform build
@@ -35,7 +34,7 @@ jobs:
     # See: https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ${{ matrix.os }}
     strategy:
-      matrix: ${{needs.matrix_prep.outputs.matrix.outputs.matrix}}
+      matrix: ${{needs.prepare_matrix.outputs.matrix}}
 
     steps:
       - name: Checkout the source
