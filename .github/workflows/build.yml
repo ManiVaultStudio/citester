@@ -13,8 +13,6 @@ env:
 jobs:
   prepare_matrix:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - name: Get matrix from file
       uses: actions/checkout@v2
@@ -24,7 +22,7 @@ jobs:
     - id: set-matrix  
       run: |
         {
-          echo 'matrix<<EOF'
+          echo "matrix<<EOF"
           cat matrix.yml
           echo EOF
         } >> "$GITHUB_OUTPUT"
@@ -38,7 +36,7 @@ jobs:
     # See: https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ${{ matrix.os }}
     strategy:
-      matrix: ${{needs.prepare_matrix.outputs.matrix}}
+      matrix: ${{needs.prepare_matrix.outputs.set-matrix.outputs.matrix}}
 
     steps:
       - name: Checkout the source
