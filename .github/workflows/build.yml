@@ -24,8 +24,9 @@ jobs:
     - id: set-matrix  
       run: |
         {
-          echo 'matrix<<EOF'
+          echo matrix<<EOF
           cat matrix.yml
+          echo ''
           echo EOF
         } >> "$GITHUB_OUTPUT"
                
