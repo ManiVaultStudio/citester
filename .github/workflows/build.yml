@@ -24,7 +24,7 @@ jobs:
     - id: set-matrix  
       run: |
         matrix=$(cat matrix.yml)
-        echo ::set-output name=matrix::$(echo "$matrix")
+        echo "name=matrix::$(echo '$matrix')" >> $GITHUB_OUTPUT 
                
   cross-platform-build:
     name: Cross platform build
