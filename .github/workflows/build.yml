@@ -23,9 +23,6 @@ jobs:
         ref: ${{ github.event.pull_request.head.ref }}
     - id: set-matrix  
       run: |
-        echo "outputting matrix"
-        cat matrix.yml
-        export matrix="$(cat matrix.yml)"
         {
           echo 'matrix<<EOF'
           cat matrix.yml
