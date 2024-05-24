@@ -15,7 +15,7 @@
           build-cversion: 11
           build-config: Release
           build-os: Linux
-          build-libcxx: libstdc++
+          build-libcxx: libstdc++11
 
         - name: Macos_xcode13.4
           os: macos-12
