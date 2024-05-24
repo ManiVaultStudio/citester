@@ -24,7 +24,7 @@ jobs:
     - id: set-matrix  
       run: |
           echo "matrix<<EOF" >> $GITHUB_OUTPUT
-          echo "$(cat matrix.yml)" >> $GITHUB_OUTPUT
+          echo "$(cat matrix.json)" >> $GITHUB_OUTPUT
           echo EOF >> $GITHUB_OUTPUT
                
   cross-platform-build:
@@ -36,8 +36,7 @@ jobs:
     # See: https://docs.github.com/en/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ${{ matrix.os }}
     strategy:
-      matrix: 
-        ${{needs.prepare_matrix.outputs.matrix}}
+      matrix: $\{{ fromJson(needs.prepare_matrix.outputs.matrix) }}
 
     steps:
       - name: Checkout the source
