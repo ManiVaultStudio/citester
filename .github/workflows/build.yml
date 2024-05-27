@@ -10,6 +10,11 @@ env:
   BUILD_TYPE: Release
 
 # for matrix check https://docs.github.com/en/actions/reference/specifications-for-github-hosted-runners
+# Optionally provide a matrix file name or combine several names
+# These files are found in github-actions build_matrices
+#
+#  matrix_name: a_matrix_file.json 
+#  combine: windows_2019.json linux_gcc11.json
 jobs:
   prepare_matrix:
     runs-on: ubuntu-latest
@@ -19,11 +24,6 @@ jobs:
     - name: Get matrix from file
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
-      # Optionally provide a matrix file name or combine several names
-      # These files are found in github-actions build_matrices
-      #with:
-      #  matrix_name: a_matrix_file.json 
-      #  combine: windows_2019.json linux_gcc11.json
       with:
         combine: windows_2019.json linux_gcc11.json
 
