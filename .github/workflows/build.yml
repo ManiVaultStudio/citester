@@ -33,10 +33,20 @@ jobs:
         echo EOF >> $GITHUB_OUTPUT
         
       shell: bash
-               
+    
+  check_matrix:
+    name: Check build matrix
+    needs: prepare_matrix
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output the matrix
+        run: |
+          echo ${{ needs.prepare_matrix.outputs.matrix }}
+        shell: bash
+
   cross-platform-build:
     name: Cross platform build
-    needs: prepare_matrix
+    needs: [prepare_matrix, check_matrix]
     # The CMake configure and build commands are platform agnostic and should work equally
     # well on Windows or Mac.  You can convert this to a matrix build if you need
     # cross-platform coverage.
