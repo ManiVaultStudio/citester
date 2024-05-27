@@ -24,9 +24,9 @@ jobs:
       id: emit_matrix
       run: |
         matrix_json=$(
-          cat<<"EOF"
-          ${{ steps.matrix_setup.outputs.matrix }}
-          EOF
+        cat<<"EOF"
+        ${{ steps.matrix_setup.outputs.matrix }}
+        EOF
         )
         echo "matrix<<EOF" >> $GITHUB_OUTPUT
         echo $matrix_json >> $GITHUB_OUTPUT
