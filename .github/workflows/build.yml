@@ -23,6 +23,7 @@ jobs:
     - name: Pass matrix
       run: |
         echo "matrix=${{ steps.matrix_setup.outputs.matrix}}" >> $GITHUB_OUTPUT
+      shell: bash
                
   cross-platform-build:
     name: Cross platform build
