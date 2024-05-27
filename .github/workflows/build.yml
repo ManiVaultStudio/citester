@@ -13,7 +13,7 @@ env:
 # Optionally provide a matrix file name or combine several names
 # These files are found in github-actions build_matrices
 #
-#  matrix_ids: a list comprising one or more of "windows_2019 linux_gcc11 macos_code14"
+#  matrix_ids: a list comprising one or more of "windows_2019 linux_gcc11 macos_code14" default is all
 jobs:
   prepare_matrix:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
       with:
-        matrix_ids: "linux_gcc11 windows_2019"
+        matrix_ids: ""
 
 
   cross-platform-build:
