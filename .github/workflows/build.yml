@@ -20,12 +20,12 @@ jobs:
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
 
-    - name: Pass matrix
-      run: |
-        echo ${{ steps.matrix_setup.outputs.matrix }} >> current_matrix.json
-        echo "$(cat current_matrix)" >> $GITHUB_OUTPUT
-        
-      shell: bash
+    #- name: Pass matrix
+    #  run: |
+    #    echo ${{ steps.matrix_setup.outputs.matrix }} >> current_matrix.json
+    #    echo "$(cat current_matrix)" >> $GITHUB_OUTPUT
+    #    
+    #  shell: bash
                
   cross-platform-build:
     name: Cross platform build
@@ -37,7 +37,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix: 
-        include: ${{ fromJson(needs.prepare_matrix.outputs.matrix) }}
+        include: ${{ fromJson(needs.prepare_matrix.outputs.steps.matrix_setup.outputs.matrix) }}
 
     steps:
       - name: Checkout the source
