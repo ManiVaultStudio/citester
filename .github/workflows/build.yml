@@ -24,7 +24,7 @@ jobs:
       id: emit_matrix
       run: |
         echo "matrix<<EOF" >> $GITHUB_OUTPUT
-        echo ${{ steps.matrix_setup.outputs.matrix }} >> $GITHUB_OUTPUT
+        echo ${{ fromJson(steps.matrix_setup.outputs.matrix) }} >> $GITHUB_OUTPUT
         echo EOF >> $GITHUB_OUTPUT
         
       shell: bash
@@ -39,7 +39,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix: 
-        include: ${{ fromJson(needs.prepare_matrix.outputs.matrix) }}
+        include: ${{ needs.prepare_matrix.outputs.matrix }}
 
     steps:
       - name: Checkout the source
