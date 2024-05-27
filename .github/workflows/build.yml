@@ -22,7 +22,9 @@ jobs:
 
     - name: Pass matrix
       run: |
-        echo "matrix='${{ steps.matrix_setup.outputs.matrix }}'" >> $GITHUB_OUTPUT
+        echo ${{ steps.matrix_setup.outputs.matrix }} >> current_matrix.json
+        echo "$(cat current_matrix)" >> $GITHUB_OUTPUT
+        
       shell: bash
                
   cross-platform-build:
