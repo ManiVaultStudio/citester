@@ -17,22 +17,12 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
     - name: Get matrix from file
+      id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
-    #   uses: actions/checkout@v2
-    #   #with:
-    #   #  submodules: recursive
-    #   #  ref: ${{ github.event.pull_request.head.ref }}
-    #   #  uses: actions/checkout@v4
-    #   with:
-    #     repository: ManiVaultStudio/github-actions
-    #     ref: compatibility
-    #     path: matrix
-    #     fetch-depth: 1
-    # - id: set-matrix  
-    #   run: |
-    #       echo "matrix<<EOF" >> $GITHUB_OUTPUT
-    #       echo "$(cat matrix/matrix.json)" >> $GITHUB_OUTPUT
-    #       echo EOF >> $GITHUB_OUTPUT
+
+    - name: Pass matrix
+      run: |
+        echo "matrix=${{ steps.matrix_setup.outputs.matrix}}" >> $GITHUB_OUTPUT
                
   cross-platform-build:
     name: Cross platform build
@@ -48,7 +38,7 @@ jobs:
 
     steps:
       - name: Checkout the source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           submodules: recursive
           ref: ${{ github.event.pull_request.head.ref }}
