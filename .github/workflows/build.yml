@@ -37,7 +37,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix: 
-        include: ${{ fromJson(needs.prepare_matrix.outputs.steps.matrix_setup.outputs.matrix) }}
+        include: ${{ fromJson(needs.prepare_matrix.outputs.matrix) }}
 
     steps:
       - name: Checkout the source
