@@ -14,12 +14,15 @@ jobs:
   prepare_matrix:
     runs-on: ubuntu-latest
     outputs:
-      #matrix: ${{ steps.emit_matrix.outputs.matrix }}
       matrix: ${{ steps.matrix_setup.outputs.matrix }}
     steps:
     - name: Get matrix from file
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
+      # Optionally provide a matrix file name
+      # These files are found in github-actions build_matrices
+      #with:
+      #  matrix_name: a_matrix_file.json 
 
 
   cross-platform-build:
