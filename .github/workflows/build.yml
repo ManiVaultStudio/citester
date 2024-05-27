@@ -25,7 +25,7 @@ jobs:
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
       with:
-        combine: "linux_gcc11.json windows_2019.json "
+        combine: "linux_gcc11 windows_2019"
 
 
   cross-platform-build:
