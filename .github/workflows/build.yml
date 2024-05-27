@@ -19,10 +19,13 @@ jobs:
     - name: Get matrix from file
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@compatibility
-      # Optionally provide a matrix file name
+      # Optionally provide a matrix file name or combine several names
       # These files are found in github-actions build_matrices
       #with:
       #  matrix_name: a_matrix_file.json 
+      #  combine: windows_2019.json linux_gcc11.json
+      with:
+        combine: windows_2019.json linux_gcc11.json
 
 
   cross-platform-build:
