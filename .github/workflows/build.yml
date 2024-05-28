@@ -22,7 +22,7 @@ jobs:
     steps:
     - name: Get matrix from file
       id: matrix_setup
-      uses: ManiVaultStudio/github-actions/matrix_setup
+      uses: ManiVaultStudio/github-actions/matrix_setup@main
 #      with:
 #        matrix_ids:
 
