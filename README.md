@@ -1,5 +1,7 @@
 ### CI Tester
 
+This branch is testing conan v2 and the new lkebartifactory.nl Artifactory.
+
 # Please do not delete!
 
 This repo is not a shippable ManiVault Studio plugin. 
