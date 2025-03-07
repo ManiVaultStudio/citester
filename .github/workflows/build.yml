@@ -79,7 +79,7 @@ jobs:
           build_cppstd: ${{ matrix.build_cppstd }}
           build_cversion: ${{ matrix.build_cversion }}
           conan_user: ${{ secrets.LKEB_ARC2_UPLOAD_USER }}
-          conan_password: '${{ secrets.LKEB_ARC2_UPLOAD_PASSWORD }}'
+          conan_password: ${{ secrets.LKEB_ARC2_UPLOAD_PASSWORD }}
           conan_pem: ${{ secrets.LKEB_UPLOAD_CERT_CHAIN }}
 
       # - name: Linux build
