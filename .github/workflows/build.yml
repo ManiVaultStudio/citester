@@ -78,9 +78,9 @@ jobs:
           compiler: ${{matrix.compiler}}
           build_cppstd: ${{matrix.build_cppstd}}
           build_cversion: ${{matrix.build_cversion}}
-          conan-user: ${{secrets.LKEB_ARC2_UPLOAD_USER}}
-          conan-password: ${{secrets.LKEB_ARC2_UPLOAD_PASSWORD}}
-          conan-pem: ${{secrets.LKEB_UPLOAD_CERT_CHAIN}}
+          conan_user: ${{secrets.LKEB_ARC2_UPLOAD_USER}}
+          conan_password: ${{secrets.LKEB_ARC2_UPLOAD_PASSWORD}}
+          conan_pem: ${{secrets.LKEB_UPLOAD_CERT_CHAIN}}
 
       # - name: Linux build
       #   if: startsWith(matrix.os, 'ubuntu')
