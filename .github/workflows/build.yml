@@ -72,15 +72,15 @@ jobs:
         if: startsWith(matrix.os, 'windows')
         uses: ManiVaultStudio/github-actions/conan_windows_build@v2
         with:
-          arch: ${{matrix.arch}}
-          build_type: ${{matrix.build_type}}
-          build_runtime: ${{matrix.build_runtime}}
-          compiler: ${{matrix.compiler}}
-          build_cppstd: ${{matrix.build_cppstd}}
-          build_cversion: ${{matrix.build_cversion}}
-          conan_user: ${{secrets.LKEB_ARC2_UPLOAD_USER}}
-          conan_password: ${{secrets.LKEB_ARC2_UPLOAD_PASSWORD}}
-          conan_pem: ${{secrets.LKEB_UPLOAD_CERT_CHAIN}}
+          arch: ${{ matrix.arch }}
+          build_type: ${{ matrix.build_type }}
+          build_runtime: ${{ matrix.build_runtime }}
+          compiler: ${{ matrix.compiler }}
+          build_cppstd: ${{ matrix.build_cppstd }}
+          build_cversion: ${{ matrix.build_cversion }}
+        #  conan_user: ${{ secrets.LKEB_ARC2_UPLOAD_USER }}
+        #  conan_password: ${{ secrets.LKEB_ARC2_UPLOAD_PASSWORD }}
+          conan_pem: ${{ secrets.LKEB_UPLOAD_CERT_CHAIN }}
 
       # - name: Linux build
       #   if: startsWith(matrix.os, 'ubuntu')
