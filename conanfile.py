@@ -21,7 +21,7 @@ class CITester(ConanFile):
     settings = ("os", "build_type", "compiler", "arch")
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True, "fPIC": True}
-    requires = "fmt/10.2.1", "lz4/1.10.0@lkeb/stable"
+    requires = "fmt/10.2.1", "lz4/1.10.0"
     exports_sources = "CMakeLists.txt", "src/*"
 
     def config_options(self):
