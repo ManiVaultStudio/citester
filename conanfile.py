@@ -21,12 +21,15 @@ class CITester(ConanFile):
     settings = ("os", "build_type", "compiler", "arch")
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True, "fPIC": True}
-    requires = "fmt/11.1.4", "lz4/1.10.0"
     exports_sources = "CMakeLists.txt", "src/*"
 
     def config_options(self):
         if self.settings.os == "Windows":
             del self.options.fPIC
+
+    def requirements(self):
+        self.requires("fmt/11.1.4", options={"shared": True})
+        self.requires("lz4/1.10.0", options={"shared": True})
 
     def generate(self):
         # These are the standard generators used in ManivaultStudio Plugins
