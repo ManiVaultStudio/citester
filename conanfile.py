@@ -17,6 +17,7 @@ class CITester(ConanFile):
     version = "1.0.0"
     description = """Test CI logic"""
     topics = ("ci test", "ManiVaultStudio")
+    package_type = "application"
 
     settings = ("os", "build_type", "compiler", "arch")
     options = {"shared": [True, False], "fPIC": [True, False]}
