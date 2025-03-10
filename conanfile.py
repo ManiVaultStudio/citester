@@ -59,4 +59,4 @@ class CITester(ConanFile):
         cmake.build()
 
     def package(self):
-        copy(pattern="Release/*")
+        copy(self, pattern="Release/*", src=self.source_folder, dst=self.package_folder)
