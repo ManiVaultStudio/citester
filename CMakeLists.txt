@@ -8,7 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(fmt REQUIRED)
 
 add_executable(CITester src/example.cpp)
-target_link_libraries(CITester PRIVATE fmt::fmt)
+target_link_libraries(CITester PRIVATE fmt::fmt REQUIRED)
 
 install(TARGETS CITester
     RUNTIME DESTINATION . COMPONENT CITESTER_EXECUTABLE
