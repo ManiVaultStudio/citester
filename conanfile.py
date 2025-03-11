@@ -57,7 +57,14 @@ class CITester(ConanFile):
         cmake = CMake(self)
         cmake.verbose = True
         cmake.configure()
-        cmake.build()
+        cmake.build(build_type="RelWithDebInfo")
+        cmake.build(build_type="Release")
 
     def package(self):
         copy(self, pattern="Release/*", src=self.source_folder, dst=self.package_folder)
+        copy(
+            self,
+            pattern="RelWithDebInfo/*",
+            src=self.source_folder,
+            dst=self.package_folder,
+        )
