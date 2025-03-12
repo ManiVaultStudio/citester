@@ -73,7 +73,7 @@ jobs:
         uses: ManiVaultStudio/github-actions/conan_windows_build@v2
         with:
           arch: ${{ matrix.arch }}
-          build_type: ${{ matrix.build_type }}
+          build_type: 'Release,RelWithDebInfo'
           build_runtime: ${{ matrix.build_runtime }}
           compiler: ${{ matrix.compiler }}
           build_cppstd: ${{ matrix.build_cppstd }}
