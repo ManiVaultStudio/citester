@@ -29,8 +29,8 @@ class CITester(ConanFile):
             del self.options.fPIC
 
     def requirements(self):
-        self.requires("fmt/11.1.4", options={"shared": True})
-        self.requires("lz4/1.10.0", options={"shared": True})
+        self.requires("fmt/11.1.4", options={"shared": False})
+        self.requires("lz4/1.10.0", options={"shared": False})
 
     def generate(self):
         # These are the standard generators used in ManivaultStudio Plugins
