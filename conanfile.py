@@ -69,6 +69,6 @@ class CITester(ConanFile):
         copy(
             self,
             pattern=f"{self.settings.build_type}/*",
-            src=self.source_folder,
+            src=self.folders.build,
             dst=self.package_folder,
         )
