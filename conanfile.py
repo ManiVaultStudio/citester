@@ -23,6 +23,7 @@ class CITester(ConanFile):
     options = {"shared": [True, False], "fPIC": [True, False]}
     default_options = {"shared": True, "fPIC": True}
     exports_sources = "CMakeLists.txt", "src/*"
+    revision_mode = "scm"
 
     def config_options(self):
         if self.settings.os == "Windows":
