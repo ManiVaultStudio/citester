@@ -75,3 +75,7 @@ class CITester(ConanFile):
             dst=os.path.join(self.package_folder, "bin"),
         )
         # TBD copy any other headers if this is a library
+
+    def package_id(self):
+        # merge all package ids to a single Release package
+        self.info.settings.build_type = "Release"
