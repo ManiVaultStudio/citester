@@ -70,6 +70,6 @@ class CITester(ConanFile):
             self,
             f"{self.settings.build_type}/*",
             src=self.build_folder,
-            dst=os.path.join(self.package_folder, "{self.settings.build_type}"),
+            dst=os.path.join(self.package_folder, f"{self.settings.build_type}"),
         )
         # TBD copy any other headers if this is a library
