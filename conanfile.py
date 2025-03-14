@@ -1,6 +1,6 @@
 from conan import ConanFile
 from conan.tools.files import copy
-from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
+from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps, cmake_layout
 
 from pathlib import Path
 import os
@@ -53,6 +53,11 @@ class CITester(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
 
+    # needed for the multi build (i.e. build_type="Release,RelWithDebInfo")
+    def layout(self):
+        cmake_layout(self)
+        self.folders.build = "multi_type_build"
+
     def build(self):
         cmake = CMake(self)
         cmake.verbose = True
@@ -60,6 +65,7 @@ class CITester(ConanFile):
         cmake.build(build_type=self.settings.build_type)
 
     def package(self):
+        print("Calling package")
         copy(
             self,
             pattern=f"{self.settings.build_type}/*",
