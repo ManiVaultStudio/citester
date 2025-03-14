@@ -68,7 +68,8 @@ class CITester(ConanFile):
         print("Calling package")
         copy(
             self,
-            pattern=f"{self.settings.build_type}/*",
-            src=self.folders.build,
-            dst=self.package_folder,
+            f"{self.settings.build_type}/*",
+            src=self.build_folder,
+            dst=os.path.join(self.package_folder, "{self.settings.build_type}"),
         )
+        # TBD copy any other headers if this is a library
