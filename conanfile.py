@@ -53,7 +53,8 @@ class CITester(ConanFile):
         deps = CMakeDeps(self)
         deps.generate()
 
-    # needed for the multi build (i.e. build_type="Release,RelWithDebInfo")
+    # Place all builds in one output folder
+    # This is needed for the multi build (i.e. build_type="Release,RelWithDebInfo")
     def layout(self):
         cmake_layout(self)
         self.folders.build = "multi_type_build"
@@ -65,11 +66,12 @@ class CITester(ConanFile):
         cmake.build(build_type=self.settings.build_type)
 
     def package(self):
+        # This should be called multiple times for each build type
         print("Calling package")
         copy(
             self,
             f"{self.settings.build_type}/*",
             src=self.build_folder,
-            dst=os.path.join(self.package_folder, f"{self.settings.build_type}"),
+            dst=os.path.join(self.package_folder, "bin"),
         )
         # TBD copy any other headers if this is a library
