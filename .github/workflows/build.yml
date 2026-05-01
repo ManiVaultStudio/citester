@@ -23,7 +23,8 @@ jobs:
       id: matrix_setup
       uses: ManiVaultStudio/github-actions/matrix_setup@v2
       with:
-        matrix_ids: [ "windows_2022_VC1710" ]
+        matrix_ids: 
+          - windows_2022_VC1710
         
   cross-platform-build:
     name: Cross platform build
